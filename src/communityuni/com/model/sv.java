@@ -1,6 +1,6 @@
-package communityuni.com;
+package communityuni.com.model;
 
-public class sv {
+public class sv implements Comparable<sv>{
 	private String name;
 	private String id;
 	private double dtb;
@@ -10,7 +10,9 @@ public class sv {
 		this.id = id;
 		this.dtb = dtb;
 	}
-	public String getName() {
+	public sv() {
+    }
+    public String getName() {
 		return name;
 	}
 	public void setName(String name) {
@@ -34,6 +36,16 @@ public class sv {
 		else if(dtb > 6.5) return "Kha";
 		else if(dtb > 5.0) return "Trung Binh";
 		else return "Yeu";
+	}
+	@Override
+	public int compareTo(sv o) {
+		if(this.dtb > o.dtb) return -1;
+		else if(this.dtb == o.dtb) return 0;
+		return 1;
+	}
+	public String toString()
+	{
+		return this.name + " " + this.id + " " + Double.toString(this.dtb);
 	}
 
 }

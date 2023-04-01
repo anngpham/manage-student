@@ -1,4 +1,4 @@
-package communityuni.com;
+package communityuni.com.model;
 
 public class attendant {
 	private String idSv;
@@ -8,7 +8,9 @@ public class attendant {
 		this.idSv = idSv;
 		this.idMh = idMh;
 	}
-	public String getIdSv() {
+	public attendant() {
+    }
+    public String getIdSv() {
 		return idSv;
 	}
 	public void setIdSv(String idSv) {
