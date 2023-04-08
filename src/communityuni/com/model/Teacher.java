@@ -1,14 +1,14 @@
 package communityuni.com.model;
 
-public class gv {
+public class Teacher {
 	private String name;
 	private String id;
-	public gv(String name, String id) {
+	public Teacher(String name, String id) {
 		super();
 		this.name = name;
 		this.id = id;
 	}
-	public gv() {
+	public Teacher() {
     }
     public String getName() {
 		return name;

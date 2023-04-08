@@ -8,14 +8,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-import communityuni.com.model.sv;
+import communityuni.com.model.*;
 
-public class rwSv {
-    public static ArrayList<sv> readSv()
+public class RwStudent {
+    public static ArrayList<Student> readStudent()
     {
-        ArrayList<sv> dsSv = new ArrayList<sv>();
+        ArrayList<Student> listStudent = new ArrayList<Student>();
         try {
-            FileInputStream fis = new FileInputStream("./src/communityuni/com/file/dsSv.txt");
+            FileInputStream fis = new FileInputStream("./src/communityuni/com/file/listStudent.txt");
             InputStreamReader isr = new InputStreamReader(fis,"UTF-8");
             BufferedReader br = new BufferedReader(isr);
             String line = br.readLine();
@@ -24,11 +24,11 @@ public class rwSv {
                 String [] arr = line.split(";");
                 if(arr.length == 3)
                 {
-                    sv tmp = new sv() ;
+                    Student tmp = new Student() ;
                     tmp.setName(arr[0]);
                     tmp.setId(arr[1]);
-                    tmp.setDtb(Double.parseDouble(arr[2]));
-                    dsSv.add(tmp);
+                    tmp.setGpa(Double.parseDouble(arr[2]));
+                    listStudent.add(tmp);
                 }
                 line = br.readLine();
             }
@@ -38,17 +38,17 @@ public class rwSv {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return dsSv;
+        return listStudent;
     }
-    public static void writeSv(ArrayList<sv> dsSv)
+    public static void writeStudent(ArrayList<Student> listStudent)
     {
         try {
-            FileOutputStream fos = new FileOutputStream("./src/communityuni/com/file/dsSv.txt");
+            FileOutputStream fos = new FileOutputStream("./src/communityuni/com/file/listStudent.txt");
             OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF-8");
             BufferedWriter bw = new BufferedWriter(osw);
-            for(sv sv : dsSv)
+            for(Student sv : listStudent)
             {
-                String line = sv.getName() + ";" + sv.getId()+ ";" + Double.toString(sv.getDtb());
+                String line = sv.getName() + ";" + sv.getId()+ ";" + Double.toString(sv.getGpa());
                 bw.write(line);
                 bw.newLine();
             }

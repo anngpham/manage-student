@@ -1,5 +1,4 @@
 package communityuni.com.io;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -8,27 +7,25 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-import communityuni.com.model.mh;
-
-public class rwMh {
-    public static ArrayList<mh> readMh()
+import communityuni.com.model.*;
+public class RwAtt {
+    public static ArrayList<Attendant> readAtt()
     {
-        ArrayList<mh> dsMh = new ArrayList<mh>();
+        ArrayList<Attendant> listAttendant = new ArrayList<Attendant>();
         try {
-            FileInputStream fis = new FileInputStream("./src/communityuni/com/file/dsMh.txt");
+            FileInputStream fis = new FileInputStream("./src/communityuni/com/file/listAttendant.txt");
             InputStreamReader isr = new InputStreamReader(fis,"UTF-8");
             BufferedReader br = new BufferedReader(isr);
             String line = br.readLine();
             while(line != null)
             {
                 String [] arr = line.split(";");
-                if(arr.length == 3)
+                if(arr.length == 2)
                 {
-                    mh tmp = new mh() ;
-                    tmp.setName(arr[0]);
-                    tmp.setId(arr[1]);
-                    tmp.setIdGv(arr[2]);
-                    dsMh.add(tmp);
+                    Attendant tmp = new Attendant() ;
+                    tmp.setIdCourse(arr[0]);
+                    tmp.setIdStudent(arr[1]);
+                    listAttendant.add(tmp);
                 }
                 line = br.readLine();
             }
@@ -38,17 +35,17 @@ public class rwMh {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return dsMh;
+        return listAttendant;
     }
-    public static void writeMh(ArrayList<mh> dsMh)
+    public static void writeAtt(ArrayList<Attendant> listAttendant)
     {
         try {
-            FileOutputStream fos = new FileOutputStream("./src/communityuni/com/file/dsMh.txt");
+            FileOutputStream fos = new FileOutputStream("./src/communityuni/com/file/listAttendant.txt");
             OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF-8");
             BufferedWriter bw = new BufferedWriter(osw);
-            for(mh mh : dsMh)
+            for(Attendant attendant : listAttendant)
             {
-                String line = mh.getName() + ";" + mh.getId()+ ";" + mh.getIdGv();
+                String line = attendant.getIdCourse() + ";" + attendant.getIdStudent();
                 bw.write(line);
                 bw.newLine();
             }
