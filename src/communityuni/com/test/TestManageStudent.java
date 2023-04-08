@@ -20,11 +20,12 @@ public class TestManageStudent {
             System.out.println("3. Show student list and sort by gpa including grade ranking");
             System.out.println("4. Add student to the course");
             System.out.println("5. Show the students of a course");
-            System.out.println("6. Show list of a student's courses including the name of the teacher who teaches that course");
+            System.out.println(
+                    "6. Show list of a student's courses including the name of the teacher who teaches that course");
             System.out.println("7. Save and exit");
             int n = new Scanner(System.in).nextInt();
             switch (n) {
-                case 1: 
+                case 1:
                     for (Teacher teacher : listTeacher) {
                         System.out.println(teacher.getName() + " " + teacher.getId());
                     }
@@ -75,7 +76,8 @@ public class TestManageStudent {
                             for (Course cr : listCourse) {
                                 if (att.getIdCourse().equals(cr.getId())) {
                                     System.out.print(cr.toString());
-                                    System.out.println(" Teacher: " + cr.getTeacherNameById(cr.getIdTeacher(), listTeacher));
+                                    System.out.println(
+                                            " Teacher: " + cr.getTeacherNameById(cr.getIdTeacher(), listTeacher));
                                     break;
                                 }
                             }
