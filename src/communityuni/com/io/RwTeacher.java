@@ -8,14 +8,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-import communityuni.com.model.gv;
+import communityuni.com.model.*;
 
-public class rwGv {
-    public static ArrayList<gv> readGv()
+public class RwTeacher {
+    public static ArrayList<Teacher> readTeacher()
     {
-        ArrayList<gv> dsGv = new ArrayList<gv>();
+        ArrayList<Teacher> listTeacher = new ArrayList<Teacher>();
         try {
-            FileInputStream fis = new FileInputStream("./src/communityuni/com/file/dsGv.txt");
+            FileInputStream fis = new FileInputStream("./src/communityuni/com/file/listTeacher.txt");
             InputStreamReader isr = new InputStreamReader(fis,"UTF-8");
             BufferedReader br = new BufferedReader(isr);
             String line = br.readLine();
@@ -24,10 +24,10 @@ public class rwGv {
                 String [] arr = line.split(";");
                 if(arr.length == 2)
                 {
-                    gv tmp = new gv() ;
+                    Teacher tmp = new Teacher() ;
                     tmp.setName(arr[0]);
                     tmp.setId(arr[1]);
-                    dsGv.add(tmp);
+                    listTeacher.add(tmp);
                 }
                 line = br.readLine();
             }
@@ -38,15 +38,15 @@ public class rwGv {
             // TODO: handle exception
             e.printStackTrace();
         }
-        return dsGv;
+        return listTeacher;
     }
-    public static void writeGv(ArrayList<gv> dsGv)
+    public static void writeTeacher(ArrayList<Teacher> listTeacher)
     {
         try {
-            FileOutputStream fos = new FileOutputStream("./src/communityuni/com/file/dsGv.txt");
+            FileOutputStream fos = new FileOutputStream("./src/communityuni/com/file/listTeacher.txt");
             OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF-8");
             BufferedWriter bw = new BufferedWriter(osw);
-            for(gv gv : dsGv)
+            for(Teacher gv : listTeacher)
             {
                 String line = gv.getName() + ";" + gv.getId();
                 bw.write(line);
