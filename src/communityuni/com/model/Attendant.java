@@ -1,5 +1,7 @@
 package communityuni.com.model;
 
+import java.util.ArrayList;
+
 public class Attendant {
 	private String idStudent;
 	private String idCourse;
@@ -21,6 +23,15 @@ public class Attendant {
 	}
 	public void setIdCourse(String idCourse) {
 		this.idCourse = idCourse;
+	}
+	public String getStudentNameById(String id, ArrayList<Student> listStudent)
+	{
+		for(Student st : listStudent)
+		{
+			if(st.getId().equals(id))
+				return st.getName();
+		}
+		return "";
 	}
 	
 }

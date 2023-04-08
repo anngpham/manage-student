@@ -51,9 +51,13 @@ public class Student implements Comparable<Student>{
 		else if(this.gpa == o.gpa) return 0;
 		return 1;
 	}
+	@Override
 	public String toString()
 	{
 		return this.name + " " + this.id + " " + Double.toString(this.gpa);
 	}
+	
+	
+
 
 }

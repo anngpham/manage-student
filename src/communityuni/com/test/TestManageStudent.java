@@ -25,8 +25,8 @@ public class TestManageStudent {
             int n = new Scanner(System.in).nextInt();
             switch (n) {
                 case 1: 
-                    for (Teacher gv : listTeacher) {
-                        System.out.println(gv.getName() + " " + gv.getId());
+                    for (Teacher teacher : listTeacher) {
+                        System.out.println(teacher.getName() + " " + teacher.getId());
                     }
                     break;
                 case 2:
@@ -45,8 +45,8 @@ public class TestManageStudent {
                 case 3:
                     ArrayList<Student> lsClone = (ArrayList<Student>) listStudent.clone();
                     Collections.sort(lsClone);
-                    for (Student sv : lsClone) {
-                        System.out.println(sv.toString() + " " + sv.getGpa());
+                    for (Student st : lsClone) {
+                        System.out.println(st.toString() + " " + st.getGpa());
                     }
                     break;
                 case 4:
@@ -64,12 +64,7 @@ public class TestManageStudent {
                     s = new Scanner(System.in).nextLine();
                     for (Attendant att : listAttendant) {
                         if (att.getIdCourse().equals(s))
-                            for (Student student : listStudent) {
-                                if (att.getIdStudent().equals(student.getId())) {
-                                    System.out.println(student.toString());
-                                    break;
-                                }
-                            }
+                            System.out.println(att.getStudentNameById(att.getIdStudent(), listStudent));
                     }
                     break;
                 case 6:
@@ -80,10 +75,7 @@ public class TestManageStudent {
                             for (Course cr : listCourse) {
                                 if (att.getIdCourse().equals(cr.getId())) {
                                     System.out.print(cr.toString());
-                                    for (Teacher teacher : listTeacher) {
-                                        if (teacher.getId().equals(cr.getIdTeacher()))
-                                            System.out.println(" Teacher: " + teacher.getName());
-                                    }
+                                    System.out.println(" Teacher: " + cr.getTeacherNameById(cr.getIdTeacher(), listTeacher));
                                     break;
                                 }
                             }

@@ -1,5 +1,7 @@
 package communityuni.com.model;
 
+import java.util.ArrayList;
+
 public class Course {
 	private String name;
 	private String id;
@@ -40,6 +42,15 @@ public class Course {
 	@Override
 	public String toString() {
 		return this.getName() + " " + this.getId();
+	}
+	public String getTeacherNameById(String id, ArrayList<Teacher> listTeacher)
+	{
+		for(Teacher teacher : listTeacher)
+		{
+			if(teacher.getId().equals(id))
+				return teacher.getName();
+		}
+		return "";
 	}
 	
 }
