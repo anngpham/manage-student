@@ -20,4 +20,18 @@ public class Attendant {
 		throw new Error("Error data in studentList");
 	}
 
+	public String toLine() {
+		return this.courseId + ";" + this.studentId;
+	}
+
+	public static Attendant plainToInstance(String line) {
+		Attendant attendant = null;
+		String[] arr = line.split(";");
+		if (arr.length == 2) {
+			String studentId = arr[0];
+			String courseId = arr[1];
+			attendant = new Attendant(studentId, courseId);
+		}
+		return attendant;
+	}
 }

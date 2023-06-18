@@ -35,4 +35,19 @@ public class Student implements Comparable<Student> {
 		return this.name + " " + this.id + " " + Double.toString(this.gpa);
 	}
 
+	public String toLine() {
+		return this.name + ";" + this.id + ";" + Double.toString(this.gpa);
+	}
+
+	public static Student plainToInstance(String line) {
+		Student student = null;
+		String[] arr = line.split(";");
+		if (arr.length == 3) {
+			String studentName = arr[0];
+			String studentId = arr[1];
+			double studentGpa = Double.parseDouble(arr[2]);
+			student = new Student(studentName, studentId, studentGpa);
+		}
+		return student;
+	}
 }

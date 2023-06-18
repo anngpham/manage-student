@@ -25,11 +25,8 @@ public class AttendantRepository extends FileHandler<Attendant> {
     public ArrayList<Attendant> convertLineArrayToObjectList(ArrayList<String> lineArr) {
         ArrayList<Attendant> attendantList = new ArrayList<Attendant>();
         for (String line : lineArr) {
-            String[] arr = line.split(";");
-            if (arr.length == 2) {
-                String studentId = arr[0];
-                String courseId = arr[1];
-                Attendant attendant = new Attendant(studentId, courseId);
+            Attendant attendant = Attendant.plainToInstance(line);
+            if (attendant != null) {
                 attendantList.add(attendant);
             }
         }
@@ -41,8 +38,7 @@ public class AttendantRepository extends FileHandler<Attendant> {
     public ArrayList<String> convertObjectListToLineArray(ArrayList<Attendant> attendantList) {
         ArrayList<String> lineArr = new ArrayList<String>();
         for (Attendant attendant : attendantList) {
-            String line = attendant.courseId + ";" + attendant.studentId;
-            lineArr.add(line);
+            lineArr.add(attendant.toLine());
         }
         return lineArr;
     }

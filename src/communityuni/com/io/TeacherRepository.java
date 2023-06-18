@@ -9,8 +9,8 @@ public class TeacherRepository extends FileHandler<Teacher> {
     private TeacherRepository() {
     }
 
-    public static TeacherRepository getInstance(){
-        if(uniqueInstance == null ) {
+    public static TeacherRepository getInstance() {
+        if (uniqueInstance == null) {
             uniqueInstance = new TeacherRepository();
         }
         return uniqueInstance;
@@ -25,11 +25,8 @@ public class TeacherRepository extends FileHandler<Teacher> {
     public ArrayList<Teacher> convertLineArrayToObjectList(ArrayList<String> lineArr) {
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
         for (String line : lineArr) {
-            String[] arr = line.split(";");
-            if (arr.length == 2) {
-                String teacherId = arr[0];
-                String teacherName = arr[1];
-                Teacher teacher = new Teacher(teacherName, teacherId);
+            Teacher teacher = Teacher.plainToInstance(line);
+            if (teacher != null) {
                 teacherList.add(teacher);
             }
         }
@@ -40,8 +37,7 @@ public class TeacherRepository extends FileHandler<Teacher> {
     public ArrayList<String> convertObjectListToLineArray(ArrayList<Teacher> teacherList) {
         ArrayList<String> lineArr = new ArrayList<String>();
         for (Teacher teacher : teacherList) {
-            String line = teacher.name + ";" + teacher.id;
-            lineArr.add(line);
+            lineArr.add(teacher.toLine());
         }
         return lineArr;
     }

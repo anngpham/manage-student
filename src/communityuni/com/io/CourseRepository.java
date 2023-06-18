@@ -25,12 +25,8 @@ public class CourseRepository extends FileHandler<Course> {
     public ArrayList<Course> convertLineArrayToObjectList(ArrayList<String> lineArr) {
         ArrayList<Course> courseList = new ArrayList<Course>();
         for (String line : lineArr) {
-            String[] arr = line.split(";");
-            if (arr.length == 3) {
-                String courseName = arr[0];
-                String courseId = arr[1];
-                String teacherId = arr[2];
-                Course course = new Course(courseName, courseId, teacherId);
+            Course course = Course.plainToInstance(line);
+            if (course != null) {
                 courseList.add(course);
             }
         }
@@ -41,8 +37,7 @@ public class CourseRepository extends FileHandler<Course> {
     public ArrayList<String> convertObjectListToLineArray(ArrayList<Course> courseList) {
         ArrayList<String> lineArr = new ArrayList<String>();
         for (Course course : courseList) {
-            String line = course.name + ";" + course.id + ";" + course.teacherId;
-            lineArr.add(line);
+            lineArr.add(course.toLine());
         }
         return lineArr;
     }

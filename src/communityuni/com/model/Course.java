@@ -27,4 +27,19 @@ public class Course {
 		throw new Error("Error data in teacherList");
 	}
 
+	public String toLine() {
+		return this.name + ";" + this.id + ";" + this.teacherId;
+	}
+
+	public static Course plainToInstance(String line) {
+		Course course = null;
+		String[] arr = line.split(";");
+		if (arr.length == 3) {
+			String courseName = arr[0];
+			String courseId = arr[1];
+			String teacherId = arr[2];
+			course = new Course(courseName, courseId, teacherId);
+		}
+		return course;
+	}
 }
