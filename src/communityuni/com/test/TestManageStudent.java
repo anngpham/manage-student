@@ -12,8 +12,8 @@ public class TestManageStudent {
 
         ArrayList<Student> listStudent = StudentRepository.getInstance().readFile();
         ArrayList<Teacher> listTeacher = TeacherRepository.getInstance().readFile();
-        ArrayList<Course> listCourse = RwCourse.readCourse();
-        ArrayList<Attendant> listAttendant = RwAtt.readAtt();
+        ArrayList<Course> listCourse = CourseRepository.getInstance().readFile();
+        ArrayList<Attendant> listAttendant = AttendantRepository.getInstance().readFile();
         boolean flag = true;
         while (flag) {
             System.out.println("1. Show list of teachers");
@@ -97,8 +97,8 @@ public class TestManageStudent {
                     flag = false;
                     StudentRepository.getInstance().writeFile(listStudent);
                     TeacherRepository.getInstance().writeFile(listTeacher);
-                    RwCourse.writeCourse(listCourse);
-                    RwAtt.writeAtt(listAttendant);
+                    CourseRepository.getInstance().writeFile(listCourse);
+                    AttendantRepository.getInstance().writeFile(listAttendant);
                 default:
                     break;
 
