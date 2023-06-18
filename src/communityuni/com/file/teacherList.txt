@@ -1,4 +1,4 @@
-Tri;gv01
-Duy;gv02
-Tien;gv03
-Minh;gv04
+gv01;Tri
+gv02;Duy
+gv03;Tien
+gv04;Minh

@@ -10,7 +10,7 @@ import communityuni.com.model.*;
 public class TestManageStudent {
     public static void main(String[] args) {
 
-        ArrayList<Student> listStudent = RwStudent.readStudent();
+        ArrayList<Student> listStudent = StudentRepository.getInstance().readFile();
         ArrayList<Teacher> listTeacher = TeacherRepository.getInstance().readFile();
         ArrayList<Course> listCourse = RwCourse.readCourse();
         ArrayList<Attendant> listAttendant = RwAtt.readAtt();
@@ -95,7 +95,7 @@ public class TestManageStudent {
                     break;
                 case 7:
                     flag = false;
-                    RwStudent.writeStudent(listStudent);
+                    StudentRepository.getInstance().writeFile(listStudent);
                     TeacherRepository.getInstance().writeFile(listTeacher);
                     RwCourse.writeCourse(listCourse);
                     RwAtt.writeAtt(listAttendant);
