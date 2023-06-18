@@ -1,9 +1,20 @@
 package communityuni.com.model;
 
+import java.util.HashMap;
+
 public class Student implements Comparable<Student> {
 	public String name;
 	public String id;
 	public double gpa;
+
+	private static final HashMap<Rank, String> RANK_CONFIG = new HashMap<Rank, String>() {
+		{
+			put(Rank.EXECLLENT, "Xuat sac");
+			put(Rank.GOOD, "Gioi");
+			put(Rank.MEDIUM, "Trung binh");
+			put(Rank.WEAK, "Yeu");
+		}
+	};
 
 	public Student(String name, String id, double gpa) {
 		this.name = name;
@@ -11,14 +22,14 @@ public class Student implements Comparable<Student> {
 		this.gpa = gpa;
 	}
 
-	public String getRank() {
+	public Rank getRank() {
 		if (gpa > 8.0)
-			return "Excellent";
+			return Rank.EXECLLENT;
 		if (gpa > 6.5)
-			return "Good";
+			return Rank.GOOD;
 		if (gpa > 5.0)
-			return "Medium";
-		return "Weak";
+			return Rank.MEDIUM;
+		return Rank.WEAK;
 	}
 
 	@Override
@@ -32,7 +43,7 @@ public class Student implements Comparable<Student> {
 
 	@Override
 	public String toString() {
-		return this.name + " " + this.id + " " + Double.toString(this.gpa);
+		return this.name + " " + this.id + " " + Double.toString(this.gpa) + " " + RANK_CONFIG.get(this.getRank());
 	}
 
 	public String toLine() {

@@ -1,6 +1,6 @@
 An;sv01;8.67
 Binh;sv02;7.23
-Cuong;sv03;4.24
+Cuong;sv03;7
 Duc;sv04;6.3
 Hoang;sv05;9.2
 kudo;sv06;10.0

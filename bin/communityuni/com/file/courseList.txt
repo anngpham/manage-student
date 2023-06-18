@@ -1,3 +1,6 @@
 Giai_Tich;mh01;gv02
 DSTT;mh02;gv01
 KTLT;mh03;gv03
+Hoa Hoc;mh04;gv01
+sinh;mh05;gv01
+dia;mh06;gv01
