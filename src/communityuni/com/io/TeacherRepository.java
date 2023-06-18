@@ -4,6 +4,17 @@ import java.util.ArrayList;
 import communityuni.com.model.*;
 
 public class TeacherRepository extends FileHandler<Teacher> {
+    private static TeacherRepository uniqueInstance = null;
+
+    private TeacherRepository() {
+    }
+
+    public static TeacherRepository getInstance(){
+        if(uniqueInstance == null ) {
+            uniqueInstance = new TeacherRepository();
+        }
+        return uniqueInstance;
+    }
 
     @Override
     protected String getFilePath() {
