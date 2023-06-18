@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import communityuni.com.model.*;
 
-public class RwTeacher {
+public class FileHandler {
     private static final String FILE_PATH = "./src/communityuni/com/file/teacherList.txt";
 
     private static ArrayList<Teacher> convertLineArrayToTeacherList(ArrayList<String> lineArr) {
@@ -37,7 +37,7 @@ public class RwTeacher {
         return lineArr;
     }
 
-    public static ArrayList<Teacher> readTeacher() {
+    public static ArrayList<Teacher> readFile() {
         ArrayList<String> lineArr = new ArrayList<String>();
         try {
             FileInputStream fis = new FileInputStream(FILE_PATH);
@@ -57,12 +57,12 @@ public class RwTeacher {
             e.printStackTrace();
         }
 
-        ArrayList<Teacher> result = RwTeacher.convertLineArrayToTeacherList(lineArr);
+        ArrayList<Teacher> result = FileHandler.convertLineArrayToTeacherList(lineArr);
         return result;
     }
 
-    public static void writeTeacher(ArrayList<Teacher> teacherList) {
-        ArrayList<String> lineArr = RwTeacher.convertTeacherListToLineArray(teacherList);
+    public static void writeFile(ArrayList<Teacher> teacherList) {
+        ArrayList<String> lineArr = FileHandler.convertTeacherListToLineArray(teacherList);
 
         try {
             FileOutputStream fos = new FileOutputStream(FILE_PATH);
