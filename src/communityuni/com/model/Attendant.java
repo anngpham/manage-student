@@ -3,35 +3,21 @@ package communityuni.com.model;
 import java.util.ArrayList;
 
 public class Attendant {
-	private String idStudent;
-	private String idCourse;
-	public Attendant(String idStudent, String idCourse) {
+	public String studentId;
+	public String courseId;
+
+	public Attendant(String studentId, String courseId) {
 		super();
-		this.idStudent = idStudent;
-		this.idCourse = idCourse;
+		this.studentId = studentId;
+		this.courseId = courseId;
 	}
-	public Attendant() {
-    }
-    public String getIdStudent() {
-		return idStudent;
-	}
-	public void setIdStudent(String idStudent) {
-		this.idStudent = idStudent;
-	}
-	public String getIdCourse() {
-		return idCourse;
-	}
-	public void setIdCourse(String idCourse) {
-		this.idCourse = idCourse;
-	}
-	public String getStudentNameById(String id, ArrayList<Student> listStudent)
-	{
-		for(Student st : listStudent)
-		{
-			if(st.getId().equals(id))
-				return st.getName();
+
+	public String getStudentName(ArrayList<Student> studentList) {
+		for (Student student : studentList) {
+			if (student.id.equals(this.studentId))
+				return student.name;
 		}
-		return "";
+		throw new Error("Error data in studentList");
 	}
-	
+
 }

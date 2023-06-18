@@ -27,57 +27,66 @@ public class TestManageStudent {
             switch (n) {
                 case 1:
                     for (Teacher teacher : listTeacher) {
-                        System.out.println(teacher.getName() + " " + teacher.getId());
+                        System.out.println(teacher.name + " " + teacher.id);
                     }
                     break;
-                case 2:
-                    Course newCr = new Course();
+                case 2: {
+
+                    String courseName = null;
+                    String courseId = null;
+                    String teacherId = null;
+
                     System.out.print("Input course's name: ");
-                    String s = new Scanner(System.in).nextLine();
-                    newCr.setName(s);
+                    courseName = new Scanner(System.in).nextLine();
                     System.out.print("Input course's id: ");
-                    s = new Scanner(System.in).nextLine();
-                    newCr.setId(s);
+                    courseId = new Scanner(System.in).nextLine();
                     System.out.print("Input teacher's id");
-                    s = new Scanner(System.in).nextLine();
-                    newCr.setIdTeacher(s);
-                    listCourse.add(newCr);
+                    teacherId = new Scanner(System.in).nextLine();
+
+                    Course course = new Course(courseName, courseId, teacherId);
+                    listCourse.add(course);
                     break;
+                }
                 case 3:
                     ArrayList<Student> lsClone = (ArrayList<Student>) listStudent.clone();
                     Collections.sort(lsClone);
                     for (Student st : lsClone) {
-                        System.out.println(st.toString() + " " + st.getGpa());
+                        System.out.println(st.toString() + " " + st.gpa);
                     }
                     break;
-                case 4:
-                    Attendant newAtt = new Attendant();
+                case 4: {
+                    String courseId = null;
+                    String studentId = null;
+
                     System.out.println("Input course's id: ");
-                    s = new Scanner(System.in).nextLine();
-                    newAtt.setIdCourse(s);
+                    courseId = new Scanner(System.in).nextLine();
                     System.out.println("Input student's id: ");
-                    s = new Scanner(System.in).nextLine();
-                    newAtt.setIdStudent(s);
-                    listAttendant.add(newAtt);
+                    studentId = new Scanner(System.in).nextLine();
+
+                    Attendant attendant = new Attendant(studentId, courseId);
+                    listAttendant.add(attendant);
                     break;
+                }
                 case 5:
+                    String courseId = null;
                     System.out.print("Input course's id: ");
-                    s = new Scanner(System.in).nextLine();
+                    courseId = new Scanner(System.in).nextLine();
                     for (Attendant att : listAttendant) {
-                        if (att.getIdCourse().equals(s))
-                            System.out.println(att.getStudentNameById(att.getIdStudent(), listStudent));
+                        if (att.courseId.equals(courseId))
+                            System.out.println(att.getStudentName(listStudent));
                     }
                     break;
                 case 6:
+                    String studentId = null;
                     System.out.print("Input student's id: ");
-                    s = new Scanner(System.in).nextLine();
+                    studentId = new Scanner(System.in).nextLine();
                     for (Attendant att : listAttendant) {
-                        if (att.getIdStudent().equals(s))
+                        if (att.studentId.equals(studentId))
                             for (Course cr : listCourse) {
-                                if (att.getIdCourse().equals(cr.getId())) {
+                                if (att.courseId.equals(cr.id)) {
                                     System.out.print(cr.toString());
                                     System.out.println(
-                                            " Teacher: " + cr.getTeacherNameById(cr.getIdTeacher(), listTeacher));
+                                            " Teacher: " + cr.getTeacherName(listTeacher));
                                     break;
                                 }
                             }
