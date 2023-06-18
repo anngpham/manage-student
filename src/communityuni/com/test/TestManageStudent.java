@@ -14,6 +14,7 @@ public class TestManageStudent {
         ArrayList<Teacher> listTeacher = TeacherRepository.getInstance().readFile();
         ArrayList<Course> listCourse = CourseRepository.getInstance().readFile();
         ArrayList<Attendant> listAttendant = AttendantRepository.getInstance().readFile();
+
         boolean flag = true;
         while (flag) {
             System.out.println("1. Show list of teachers");
